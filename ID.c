@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#define N 100
+#define N 6
 struct birth
 {
     int     year;
@@ -17,7 +17,19 @@ struct person
 
 int read(struct person p[])
 {
-   
+    int i = 0;
+    while (i < 18) {
+        p->ID[i] = getchar();
+        i++;
+    }
+    p->ID[18] = 0;
+    i = 0;
+    int ch;
+    while((ch = getchar()) != '\n') {
+        p->name[i] = ch;
+        i++;
+    }
+    p->name[i] = 0;
 }
 
 int checkID(char *ID)
@@ -57,7 +69,12 @@ struct birth get_birth(char *ID)
 
 void get_all_person(struct person p[], int n)
 {
-
+    int i  = 0;
+    while (i < n) {
+        printf("get person %d\n", i);
+        read(p + i);
+        i++;
+    }
 }
 
 void display_person(struct person p[], int n, int flag)
@@ -102,12 +119,22 @@ int prompt(void)
 
 int main(void)
 {
+    // checkId testing code 
+    // char id1[] = "510108197501031517";
+    // printf("id validity = %d\n", checkID(id1));
+    // char id2[] = "440524198001010013";
+    // printf("id validity = %d\n", checkID(id2));
 
 
-    char id1[] = "510108197501031517";
-    printf("id validity = %d\n", checkID(id1));
-    char id2[] = "440524198001010013";
-    printf("id validity = %d\n", checkID(id2));
+    // read all data
+    struct person persons[N + 1];
+    get_all_person(persons, N);
+
+    // read all data testing code 
+    // for (int i = 0; i < N; i++) {
+    //     printf("person %s\n", persons[0].ID);
+    // }
+
     return 0;
     struct person p[N];
     int cmd, n;
