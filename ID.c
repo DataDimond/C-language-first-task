@@ -12,7 +12,7 @@ struct person
     char    ID[19];
     char    name[20];
     struct  birth  birthday;
-    int flag;//校验位是否正确, 1代表正确，0代表错误
+    int flag; // verify code: 1 correct, 0 wrong
 };
 
 int read(struct person p[])
@@ -62,15 +62,15 @@ void save(struct person p[], int n)
 
 int prompt(void)
 {
-    int cmd=0;
+     int cmd=0;
     printf("-------------------\n");
-    printf("1.  公民信息显示（不含错误信息）\n");
-    printf("2.  错误信息查询\n");
-    printf("3.  按出生日期排序（不含错误信息）\n");
-    printf("4.  重名查询（不含错误信息）\n");
-    printf("0.  退出\n");
+    printf("1.  Show ID Info(Without wrong IDs.)\n");
+    printf("2.  Show Wrong IDs\n");
+    printf("3.  By Birtyday(Without Wrong IDs)\n");
+    printf("4.  Show Duplicates(Without Wrong IDs)\n");
+    printf("0.  Quit\n");
     printf("-------------------\n");
-    printf("请输入你的选择(0-4):");
+    printf("enter your choice(0-4):");
     scanf("%d", &cmd);
     return cmd;
 }
@@ -81,8 +81,11 @@ int main(void)
     int cmd, n;
     while (1)
     {   cmd = prompt();
-
-
+        printf("cmd = %d\n", cmd);
+        if (cmd == 0) {
+            /* TODO: should save correct IDs: requirments 1 */
+            return 0;
+        }
     } 
     return 0;
 }
