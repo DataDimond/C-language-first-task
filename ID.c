@@ -134,7 +134,12 @@ int main(void)
     // for (int i = 0; i < N; i++) {
     //     printf("person %s\n", persons[0].ID);
     // }
-
+     for (int i = 0; i < N; i++) {
+        persons[i].flag = checkID(persons[i].ID);
+     }
+    for (int i = 0; i < N; i++) {
+        printf("id = %s, flat = %d\n", persons[i].ID, persons[i].flag);
+    }
     return 0;
     struct person p[N];
     int cmd, n;
