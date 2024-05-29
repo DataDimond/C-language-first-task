@@ -22,7 +22,32 @@ int read(struct person p[])
 
 int checkID(char *ID)
 {
+    int coeffect[] = {7, 9,10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2};
 
+    // step 1: got the sum
+    int sum = 0;
+    for (int i = 0; i < 17; i++) {
+        sum += (ID[i] - '0') * coeffect[i];
+    }
+
+    printf("sum = %d\n", sum);
+
+    // step 3: modular by 11 
+    int m = sum % 11;
+    
+    printf("m = %d\n", m);
+    // step 4: transform
+    int transforms[] = {'1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'};
+    int parityChar = transforms[m];
+
+    
+    printf("parityChar = %c\n", parityChar);
+
+    if (parityChar == ID[17]) { 
+        return 1;
+    } else {
+        return 0;
+    }
 }
 
 struct birth get_birth(char *ID)
@@ -77,8 +102,20 @@ int prompt(void)
 
 int main(void)
 {
+
+
+    char id1[] = "510108197501031517";
+    printf("id validity = %d\n", checkID(id1));
+    char id2[] = "440524198001010013";
+    printf("id validity = %d\n", checkID(id2));
+    return 0;
     struct person p[N];
     int cmd, n;
+
+    /* read in data */
+
+    /* validation */
+
     while (1)
     {   cmd = prompt();
         printf("cmd = %d\n", cmd);
